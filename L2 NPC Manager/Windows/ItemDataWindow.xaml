@@ -1,0 +1,77 @@
+﻿<Window x:Class="L2NPCManager.Windows.ItemDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:L2NPCManager.Controls"
+        Title="Item Data" Height="423.35" Width="690" Background="#FF7E7E7E" WindowStartupLocation="CenterOwner" FontSize="14" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="col_base" TargetType="DataGridCell">
+            <Setter Property="TextBlock.FontFamily" Value="Segoe UI SemiBold" />
+            <Setter Property="TextBlock.FontSize" Value="16" />
+        </Style>
+        <Style x:Key="col_centered" TargetType="DataGridCell" BasedOn="{StaticResource col_base}">
+            <Style.Setters>
+                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            </Style.Setters>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240" MinWidth="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Menu Grid.ColumnSpan="2" FontSize="14">
+            <MenuItem Header="File">
+                <MenuItem Header="Close" Click="menuClose_Click" />
+            </MenuItem>
+        </Menu>
+
+        <Grid Margin="6,6,6,0" VerticalAlignment="Top" Grid.Row="1" Height="24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="txtItemSearch" Height="24" TextWrapping="Wrap" VerticalContentAlignment="Center" KeyDown="txtItemSearch_KeyDown"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Button x:Name="btnItemsSearch" Width="28" Height="24" ToolTip="Search Items" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Margin="1,0,4,0" Click="btnItemsSearch_Click">
+                    <Image Source="/Resources/Images/search.png" />
+                </Button>
+                <Button x:Name="btnItemsAdd" Width="28" Height="24" ToolTip="Add New Item" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnItemsAdd_Click" Margin="0,0,1,0">
+                    <Image Source="/Resources/Images/add.png" />
+                </Button>
+                <Button x:Name="btnItemsClone" Width="28" Height="24" ToolTip="Clone Selected Item" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnItemsClone_Click">
+                    <Image Source="/Resources/Images/copy.png" />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <DataGrid x:Name="lstItems" Margin="6,35,6,4" Grid.Row="1" CellStyle="{StaticResource col_base}" AutoGenerateColumns="False" IsReadOnly="True" CanUserReorderColumns="False" HeadersVisibility="Column" SelectionMode="Single" CanUserResizeRows="False" SelectionChanged="lstItems_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding DisplayID}" Width="80" CanUserReorder="False" ClipboardContentBinding="{x:Null}" Header="ID" CellStyle="{StaticResource col_centered}" />
+                <DataGridTextColumn Binding="{Binding DisplayName}" Width="*" CanUserReorder="False" ClipboardContentBinding="{x:Null}" Header="Name"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Width="4" Grid.Row="1"/>
+        <TabControl Grid.Column="1" Margin="10,6,6,4" Grid.Row="1">
+            <TabItem Header="Properties" Width="80" FontWeight="Bold">
+                <Grid Background="#FFE5E5E5">
+                    <Controls:TextBoxUINT x:Name="txtID" Min="0" AllowEmpty="False" HorizontalAlignment="Left" Height="24" Margin="6,6,0,0" VerticalAlignment="Top" Width="80" VerticalContentAlignment="Center" FontSize="14" ToolTip="Item ID" HorizontalContentAlignment="Center" IsReadOnly="True" TextChanged="txtID_TextChanged" />
+                    <TextBox x:Name="txtName" Height="24" Margin="91,6,6,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14" ToolTip="Item Name" IsReadOnly="True" TextChanged="txtName_TextChanged"/>
+                    <Controls:ItemPropertiesPanel x:Name="lstProperties" Margin="6,35,6,6" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <StatusBar VerticalAlignment="Bottom" Grid.Row="2" Grid.ColumnSpan="2">
+            <StatusBarItem x:Name="status" Content="Ready" />
+            <StatusBarItem Width="200" HorizontalAlignment="Right" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                <ProgressBar x:Name="progress" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

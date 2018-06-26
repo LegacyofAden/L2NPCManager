@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="L2NPCManager.Controls.ScriptControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:Controls="clr-namespace:L2NPCManager.Controls"
+        mc:Ignorable="d" d:DesignWidth="656" d:DesignHeight="308">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ComboBoxStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="btnSearchStyle" TargetType="Button">
+                <Setter Property="BorderBrush" Value="#666"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter Property="Background" Value="#999"/>
+                        <Setter Property="BorderBrush" Value="#00F"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <ControlTemplate x:Key="btnSearchTemplate" TargetType="{x:Type ButtonBase}">
+                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6">
+                    <ContentPresenter />
+                </Border>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="152"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="28"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Rectangle Grid.ColumnSpan="4" >
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF958D8D" Offset="0"/>
+                    <GradientStop Color="#FF464646" Offset="1"/>
+                    <GradientStop Color="#FFB4B4B4" Offset="0.508"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Button x:Name="btnCompile" HorizontalAlignment="Left" Margin="2,0" Width="22" Height="22" ToolTip="Compile" Template="{StaticResource btnSearchTemplate}" Style="{StaticResource btnSearchStyle}" Click="btnCompile_Click">
+            <Image Source="/Resources/Images/compile.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="16"/>
+        </Button>
+        <ComboBox x:Name="lstLanguage" VerticalAlignment="Center" Margin="26,0,2,0" FontFamily="Segoe UI Semibold" Height="22"  Style="{StaticResource scriptComboStyle}" IsEnabled="False">
+            <ComboBoxItem Content="OBJ" />
+            <ComboBoxItem Content="NASC" />
+        </ComboBox>
+        <ComboBox x:Name="lstScript" Grid.Column="1" Margin="0,0,2,0" VerticalAlignment="Center" Height="22" SelectionChanged="lstScript_SelectionChanged" DisplayMemberPath="Name" Style="{StaticResource scriptComboStyle}"/>
+        <ComboBox x:Name="lstItems" Margin="0" Height="22" Grid.Column="2" VerticalAlignment="Center" SelectionChanged="lstItems_SelectionChanged" DisplayMemberPath="Name" Style="{StaticResource scriptComboStyle}"/>
+        <Button x:Name="btnSearch" Width="22" Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,2,0" Grid.Column="3" ToolTip="Search" Template="{StaticResource btnSearchTemplate}" Style="{StaticResource btnSearchStyle}" Click="btnSearch_Click">
+            <Image Source="/Resources/Images/search.png" VerticalAlignment="Center" HorizontalAlignment="Center" Height="16" Width="16" />
+        </Button>
+        <Grid x:Name="list" Grid.Row="1" Grid.ColumnSpan="4">
+            <Controls:ScriptPageControl />
+        </Grid>
+    </Grid>
+</UserControl>

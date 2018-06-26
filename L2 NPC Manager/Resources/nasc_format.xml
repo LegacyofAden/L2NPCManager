@@ -1,0 +1,191 @@
+<autocomplete>
+	<item name="class"/>
+	<item name="handler:"/>
+	<item name="property:"/>
+	<item name="parameter:"/>
+
+  <event name="EventHandler">
+    <event name="ATTACKED"/>
+    <event name="CREATED"/>
+  </event>
+	
+	<item name="if"/>
+	<item name="else"/>
+	<item name="for"/>
+	<item name="while"/>
+	<item name="switch"/>
+	<item name="case"/>
+	<item name="break"/>
+	<item name="return"/>
+	<item name="super"/>
+	
+	<item name="int"/>
+	<item name="float"/>
+	<item name="string"/>
+  <item name="waypointdelaystype"/>
+  <item name="waypointstype"/>
+	<item name="null"/>
+		
+	<method name="AllocCodeInfoList"/>
+	<method name="GetNPCFromID"/>
+	<method name="GetTimeOfDay"/>
+	<method name="HaveMemo"/>
+	<method name="IsEventServer" deprecated="true" description="This method is not compatible with the compiler."/>
+	<method name="IsNull"/>
+	<method name="Rand"/>
+	<method name="SetCurrentQuestID"/>
+	<method name="SetInfo"/>
+	
+	<class name="Random">
+		<method name="RandomSelectOne"/>
+	</class>
+	
+	<struct name="myself">
+    <struct name="boss">
+      <property name="alive"/>
+      <property name="level"/>
+      <property name="x"/>
+      <property name="y"/>
+      <property name="z"/>
+    </struct>
+
+    <struct name="master">
+      <property name="target_id"/>
+    </struct>
+    
+		<struct name="sm">
+		  <property name="alive"/>
+		  <property name="db_value"/>
+		  <property name="flag"/>
+		  <property name="hp"/>
+		  <property name="id"/>
+		  <property name="in_peacezone"/>
+		  <property name="last_blow_weapon_class_id"/>
+		  <property name="level"/>
+		  <property name="max_hp"/>
+		  <property name="master"/>
+		  <property name="mp"/>
+		  <property name="name"/>
+		  <property name="param1"/>
+		  <property name="param2"/>
+		  <property name="param3"/>
+		  <property name="pledge_id"/>
+		  <property name="race"/>
+		  <property name="residence_id"/>
+		  <property name="respawn_time"/>
+		  <property name="summoner_id"/>
+		  <property name="weight_point"/>
+		  <property name="x"/>
+		  <property name="y"/>
+		  <property name="z"/>
+		</struct>
+
+    <property name="i_quest0"/>
+    <property name="i_quest1"/>
+    <property name="i_quest2"/>
+    <property name="i_quest3"/>
+    <property name="p_state"/>
+    <property name="start_x"/>
+    <property name="start_y"/>
+    <property name="start_z"/>
+    <property name="top_desire_target">
+    <property name="x"/>
+    <property name="y"/>
+    <property name="z"/>
+    </property>
+
+    <method name="AddAttackDesire" description="Adds attack desire towards npc.">
+      <param name="object" description="The NPC to attack"/>
+      <param name="value" description="Attack Value"/>
+    </method>
+		<method name="AddChoice"/>
+		<method name="AddDoNothingDesire"/>
+		<method name="AddEffectActionDesire"/>
+    <method name="AddFollowDesire" description="AddFollowDesire()"/>
+		<method name="AddLog"/>
+		<method name="AddMoveAroundDesire"/>
+		<method name="AddPetDefaultDesire_Follow"/>
+		<method name="AddTimerEx"/>
+		<method name="AddUseSkillDesire"/>
+		<method name="CanAttack"/>
+		<method name="ClassChange"/>
+    <method name="CreatePrivates"/>
+		<method name="DeleteItem1"/>
+		<method name="Despawn"/>
+		<method name="DistFromMe"/>
+		<method name="DropItem1"/>
+		<method name="DropItem2"/>
+		<method name="EarthQuakeByNPC"/>
+		<method name="EquipItem"/>
+		<method name="FHTML_SetFileName"/>
+		<method name="FHTML_SetInt"/>
+		<method name="FloatToInt"/>
+		<method name="GetAbnormalLevel"/>
+		<method name="GetCreatureFromIndex"/>
+		<method name="GetCurrentTick"/>
+		<method name="GetHTMLCookie"/>
+		<method name="GetIndexFromCreature"/>
+		<method name="GetInventoryInfo"/>
+		<method name="GetLastAttacker"/>
+		<method name="GetLifeTime"/>
+		<method name="GetMemberOfParty"/>
+		<method name="GetMemoCount"/>
+		<method name="GetMemoState"/>
+		<method name="GetMemoStateEx"/>
+		<method name="GetOneTimeQuestFlag"/>
+		<method name="GetPathfindFailCount"/>
+		<method name="GetSummon"/>
+		<method name="GetTick"/>
+		<method name="GiveItem1"/>
+		<method name="HaveMemo"/>
+		<method name="IncrementParam"/>
+		<method name="InMyTerritory"/>
+		<method name="InstantTeleport"/>
+		<method name="IsInCategory"/>
+		<method name="IsNullCreature"/>
+		<method name="MakeAttackEvent"/>
+		<method name="MakeFString"/>
+		<method name="Maker_FindNpcByKey"/>
+		<method name="OwnItemCount"/>
+		<method name="Party_GetCount"/>
+		<method name="Party_GetCreature"/>
+		<method name="PledgeLevelUp"/>
+		<method name="PledgeScoreInc"/>
+    <method name="RandomizeAttackDesire"/>
+		<method name="RegisterGlobalMap"/>
+		<method name="RemoveAllAttackDesire"/>
+		<method name="RemoveAllDesire"/>
+		<method name="RemoveAttackDesire"/>
+		<method name="RemoveMemo"/>
+		<method name="RideWyvern"/>
+		<method name="Say"/>
+		<method name="Sell"/>
+		<method name="SetCurrentQuestID"/>
+		<method name="SetDBValue"/>
+		<method name="SetEnchantOfWeapon"/>
+		<method name="SetFlagJournal"/>
+		<method name="SetHTMLCookie"/>
+		<method name="SetInfo"/>
+		<method name="SetMemoState"/>
+		<method name="SetMemoStateEx"/>
+		<method name="SetNobless"/>
+		<method name="SetOneTimeQuestFlag"/>
+		<method name="Shout"/>
+		<method name="ShowChoicePage"/>
+		<method name="ShowFHTML"/>
+		<method name="ShowPage"/>
+		<method name="ShowSystemMessage"/>
+		<method name="ShowQuestMark"/>
+		<method name="GetAbnormalLevel"/>
+		<method name="Skill_GetAbnormalType"/>
+		<method name="Skill_GetConsumeHP"/>
+		<method name="Skill_GetConsumeMP"/>
+		<method name="Skill_GetEffectPoint"/>
+		<method name="Skill_InReuseDelay"/>
+		<method name="SoundEffect"/>
+		<method name="SpecialCamera"/>
+		<method name="StopMove"/>
+		<method name="UnregisterGlobalMap"/>
+		<method name="UseSoulShot"/>
+	</struct>
+</autocomplete>

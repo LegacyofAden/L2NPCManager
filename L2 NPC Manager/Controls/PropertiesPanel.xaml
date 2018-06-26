@@ -1,0 +1,271 @@
+﻿<UserControl x:Class="L2NPCManager.Controls.PropertiesPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Controls="clr-namespace:L2NPCManager.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="1441" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="row" TargetType="Grid">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#8FFF" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="lbl" TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Segoe UI Semibold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="2,0" />
+        </Style>
+        <Style x:Key="val" TargetType="FrameworkElement">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="160" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="Margin" Value="0,2,4,2" />
+            <Setter Property="TextBlock.FontSize" Value="14" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="val_check" TargetType="FrameworkElement">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,4,80,4" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <ScrollViewer>
+            <StackPanel x:Name="content" SnapsToDevicePixels="True">
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Type" Style="{StaticResource lbl}" />
+                    <ComboBox x:Name="lstTypes" Style="{StaticResource val}" IsEditable="True" TextBoxBase.TextChanged="txt_TextChanged" SelectionChanged="lst_SelectionChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Level" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtLevel" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="AI Script" Style="{StaticResource lbl}" />
+                    <TextBox x:Name="txtAI" Style="{StaticResource val}" TextChanged="txt_TextChanged" Width="133" Margin="0,2,31,2" />
+                    <Button x:Name="btnNewScript" Click="btnNewScript_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Width="24" Margin="0,2,4,2" Height="24" ToolTip="Create new AI class">
+                        <Image Source="/Resources/Images/add.png" />
+                    </Button>
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Acquire Exp. Rate" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtAcquireExpRate" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Acquire Sp." Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtAcquireSp" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Unsowing" Style="{StaticResource lbl}" />
+                    <CheckBox x:Name="chkUnsowing" Style="{StaticResource val_check}" Checked="chk_Checked" Unchecked="chk_Checked" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Clan" Style="{StaticResource lbl}" />
+                    <ComboBox x:Name="lstClan" Style="{StaticResource val}" IsEditable="True" TextBoxBase.TextChanged="txt_TextChanged" SelectionChanged="lst_SelectionChanged" Margin="0,2,31,2" Width="133" />
+                    <Button x:Name="btnClans" HorizontalAlignment="Right" Margin="0,0,4,0" VerticalAlignment="Center" Width="24" Height="24" Click="btnClans_Click">
+                        <Image Source="/Resources/Images/list.png" />
+                    </Button>
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Ignore Clan List" Style="{StaticResource lbl}" />
+                    <ComboBox x:Name="lstIgnoreClanList" Style="{StaticResource val}" IsEditable="True" TextBoxBase.TextChanged="txt_TextChanged" SelectionChanged="lst_SelectionChanged" Margin="0,2,31,2" Width="133" />
+                    <Button x:Name="btnIgnoreClans" HorizontalAlignment="Right" Margin="0,0,4,0" VerticalAlignment="Center" Width="24" Height="24" Click="btnIgnoreClans_Click">
+                        <Image Source="/Resources/Images/list.png" />
+                    </Button>
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Clan Help Range" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtClanHelpRange" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Slot Chest" Style="{StaticResource lbl}" />
+                    <TextBox x:Name="txtSlotChest" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Slot Right-Hand" Style="{StaticResource lbl}" />
+                    <TextBox x:Name="txtSlotRHand" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Slot Left-Hand" Style="{StaticResource lbl}" />
+                    <TextBox x:Name="txtSlotLHand" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Shield Defense Rate" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtShieldDefenseRate" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Shield Defense" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtShieldDefense" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Race" Style="{StaticResource lbl}" />
+                    <ComboBox x:Name="lstRace" Style="{StaticResource val}" IsEditable="True" TextBoxBase.TextChanged="txt_TextChanged" SelectionChanged="lst_SelectionChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Sex" Style="{StaticResource lbl}" />
+                    <ComboBox x:Name="lstSex" Style="{StaticResource val}" SelectionChanged="lst_SelectionChanged" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                        <ComboBoxItem Content="male" />
+                        <ComboBoxItem Content="female" />
+                        <ComboBoxItem Content="etc" />
+                    </ComboBox>
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Undying" Style="{StaticResource lbl}" />
+                    <CheckBox x:Name="chkUndying" Style="{StaticResource val_check}" Checked="chk_Checked" Unchecked="chk_Checked" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Can be Attacked" Style="{StaticResource lbl}" />
+                    <CheckBox x:Name="chkCanBeAttacked" Style="{StaticResource val_check}" Checked="chk_Checked" Unchecked="chk_Checked" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Corpse Time" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtCorpseTime" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="No Sleep Mode" Style="{StaticResource lbl}" />
+                    <CheckBox x:Name="chkNoSleepMode" Style="{StaticResource val_check}" Checked="chk_Checked" Unchecked="chk_Checked" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Agro Range" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtAgroRange" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Run Speed" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtGroundHigh" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Walk Speed" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtGroundLow" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Exp" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtExp" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Org HP" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtOrgHp" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Org HP Regen" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtOrgHpRegen" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Org MP" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtOrgMp" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Org MP Regen" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtOrgMpRegen" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Collision Radius" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtCollisionRadius" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Collision Height" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtCollisionHeight" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Str" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtStr" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Int" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtInt" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Dex" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtDex" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Wit" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtWit" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Con" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtCon" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Men" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtMen" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Attack Type" Style="{StaticResource lbl}" />
+                    <ComboBox x:Name="lstBaseAttackType" Style="{StaticResource val}" IsEditable="True" TextBoxBase.TextChanged="txt_TextChanged" SelectionChanged="lst_SelectionChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Attack Range" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtBaseAttackRange" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Damage Range" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtBaseDamageRange_angle" Style="{StaticResource val}" TextChanged="txt_TextChanged" Margin="0,2,86,2" Width="78" ToolTip="Horizontal Angle" />
+                    <Controls:TextBoxUINT x:Name="txtBaseDamageRange_distance" Style="{StaticResource val}" TextChanged="txt_TextChanged" Margin="0,2,4,2" Width="78" ToolTip="Horizontal Distance" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Random Damage" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtBaseRandDam" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Physical Attack" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtBasePhysicalAttack" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Critical" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtBaseCritical" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Physical Hit Modify" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtPhysicalHitModify" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Attack Speed" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtBaseAttackSpeed" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Reuse Delay" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtBaseReuseDelay" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Magic Attack" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtBaseMagicAttack" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Defend" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtBaseDefend" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Base Magic Defend" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtBaseMagicDefend" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Physical Avoid Modify" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtPhysicalAvoidModify" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="SoulShot Count" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtSoulshotCount" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="SpiritShot Count" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtSpiritShotCount" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Hit Time Factor" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxFloat x:Name="txtHitTimeFactor" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+                <Grid Style="{StaticResource row}">
+                    <Label Content="Safe Height" Style="{StaticResource lbl}" />
+                    <Controls:TextBoxUINT x:Name="txtSafeHeight" Style="{StaticResource val}" TextChanged="txt_TextChanged" />
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

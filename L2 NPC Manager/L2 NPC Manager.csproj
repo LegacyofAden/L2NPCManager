@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C3930D68-A692-4BF1-AC4C-46E8AE603788}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>L2NPCManager</RootNamespace>
+    <AssemblyName>L2 NPC Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>L2NPCManager.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.1.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AvalonEdit.5.0.2\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Desktop\Extended WPF Toolkit Binaries\Xceed.Wpf.Toolkit.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\LineRenderer.cs" />
+    <Compile Include="Controls\MapButton.cs" />
+    <Compile Include="Controls\MapControl.xaml.cs">
+      <DependentUpon>MapControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScriptControl.xaml.cs">
+      <DependentUpon>ScriptControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScriptPageControl.xaml.cs">
+      <DependentUpon>ScriptPageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Bounds2D.cs" />
+    <Compile Include="Data\GeoManager.cs" />
+    <Compile Include="Data\NpcManager.cs" />
+    <Compile Include="Graphics\TestScene.cs" />
+    <Compile Include="AI\Scripts\ClassDefinition.cs" />
+    <Compile Include="AI\CompilerError.cs" />
+    <Compile Include="AI\CompilerParser.cs" />
+    <Compile Include="AI\Scripts\EventHandlerItem.cs" />
+    <Compile Include="AI\HeaderDocument.cs" />
+    <Compile Include="AI\Scripts\MesloFont.cs" />
+    <Compile Include="AI\Scripts\RegexReplacement.cs" />
+    <Compile Include="AI\Scripts\ScriptCollection.cs" />
+    <Compile Include="AI\ScriptCompiler.cs" />
+    <Compile Include="AI\Scripts\ScriptItem.cs" />
+    <Compile Include="Data\ScriptManager.cs" />
+    <Compile Include="AI\ScriptParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AI\Scripts\ScriptProperty.cs" />
+    <Compile Include="AI\Workers\ScriptDecompileWorker.cs" />
+    <Compile Include="AI\Workers\ScriptLoadWorker.cs" />
+    <Compile Include="AI\Workers\ScriptSaveWorker.cs" />
+    <Compile Include="AI\Completion\CompletionCollection.cs" />
+    <Compile Include="AI\Completion\CompletionDocument.cs" />
+    <Compile Include="AI\Completion\CompletionIcons.cs" />
+    <Compile Include="AI\Completion\CompletionItem.cs" />
+    <Compile Include="Data\ItemManager.cs" />
+    <Compile Include="IO\BackupHelper.cs" />
+    <Compile Include="IO\Paths.cs" />
+    <Compile Include="IO\Settings.cs" />
+    <Compile Include="IO\Workers\ProgressPoller.cs" />
+    <Compile Include="IO\Workers\ProgressWorker.cs" />
+    <Compile Include="Windows\NewScriptWindow.xaml.cs">
+      <DependentUpon>NewScriptWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Workers\ProgressPoller.cs" />
+    <Compile Include="Workers\ProgressWorker.cs" />
+    <Page Include="Controls\ComboBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GroupPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ItemPropertiesPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MapControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PositionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PropertiesPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ScriptControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ScriptPageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SpoilPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdjustRatesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\BalanceRemaindersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ClansWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CompilerOutputWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\IgnoreClansWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ItemDataWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\GroupPanel.xaml.cs">
+      <DependentUpon>GroupPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ItemPropertiesPanel.xaml.cs">
+      <DependentUpon>ItemPropertiesPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PositionControl.xaml.cs">
+      <DependentUpon>PositionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PropertiesPanel.xaml.cs">
+      <DependentUpon>PropertiesPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpoilPanel.xaml.cs">
+      <DependentUpon>SpoilPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextBoxUINT.cs" />
+    <Compile Include="Controls\TextBoxFloat.cs" />
+    <Compile Include="IO\ClanHelper.cs" />
+    <Compile Include="IO\Documents\DocumentBase.cs" />
+    <Compile Include="IO\Documents\ItemBase.cs" />
+    <Compile Include="IO\Documents\DocumentValue.cs" />
+    <Compile Include="IO\Extensions\ObservableCollectionExtensions.cs" />
+    <Compile Include="GeoEngine\Geo\Blocks\GeoBlockComplex.cs" />
+    <Compile Include="GeoEngine\Geo\Blocks\GeoBlockFlat.cs" />
+    <Compile Include="GeoEngine\Geo\Blocks\GeoBlockMultiLayer.cs" />
+    <Compile Include="GeoEngine\Geo\Cells\GeoCellCM.cs" />
+    <Compile Include="GeoEngine\Geo\Cells\GeoCellFlat.cs" />
+    <Compile Include="GeoEngine\Config.cs" />
+    <Compile Include="GeoEngine\Exceptions\GeoDataNotFoundException.cs" />
+    <Compile Include="GeoEngine\Exceptions\GeoDataNotLoadedException.cs" />
+    <Compile Include="GeoEngine\Exceptions\GeoFileLoadException.cs" />
+    <Compile Include="GeoEngine\Exceptions\GeoFileNotFoundException.cs" />
+    <Compile Include="GeoEngine\Geo\GeoBlock.cs" />
+    <Compile Include="GeoEngine\GeoBlockEntry.cs" />
+    <Compile Include="GeoEngine\Geo\GeoBlockSelector.cs" />
+    <Compile Include="GeoEngine\Geo\GeoCell.cs" />
+    <Compile Include="GeoEngine\Geo\GeoEngine.cs" />
+    <Compile Include="GeoEngine\Geo\GeoRegion.cs" />
+    <Compile Include="GeoEngine\JOGL\GLDisplay.cs" />
+    <Compile Include="GeoEngine\JOGL\GLSelectionBox.cs" />
+    <Compile Include="GeoEngine\PropertiesBase.cs" />
+    <Compile Include="GeoEngine\PropertyItem.cs" />
+    <Compile Include="GeoEngine\Entity\SelectionState.cs" />
+    <Compile Include="GeoEngine\Swing\FrameMain.cs" />
+    <Compile Include="GeoEngine\Utils\FastArrayList.cs" />
+    <Compile Include="GeoEngine\Utils\GeoByteBuffer.cs" />
+    <Compile Include="GeoEngine\Utils\GeoReader.cs" />
+    <Compile Include="GeoEngine\Utils\GeoStreamReader.cs" />
+    <Compile Include="GeoEngine\Utils\GeoStreamWriter.cs" />
+    <Compile Include="GeoEngine\Utils\GeoWriter.cs" />
+    <Compile Include="GeoEngine\Utils\Util.cs" />
+    <Compile Include="Data\Items\ItemData.cs" />
+    <Compile Include="Data\Items\ItemDataDocument.cs" />
+    <Compile Include="Data\Items\SetData.cs" />
+    <Compile Include="Data\Npc\NpcData.cs" />
+    <Compile Include="Data\Npc\NpcDocument.cs" />
+    <Compile Include="Data\Npc\NpcSpoilGroup.cs" />
+    <Compile Include="Data\Npc\NpcDropGroup.cs" />
+    <Compile Include="Data\Npc\NpcDropItem.cs" />
+    <Compile Include="Data\NpcPosition\DomainData.cs" />
+    <Compile Include="Data\NpcPosition\NpcMakerExData.cs" />
+    <Compile Include="Data\NpcPosition\NpcMakerData.cs" />
+    <Compile Include="Data\NpcPosition\NpcPositionExData.cs" />
+    <Compile Include="Data\NpcPosition\NpcPositionData.cs" />
+    <Compile Include="Data\NpcPosition\NpcPositionDocument.cs" />
+    <Compile Include="Data\NpcPosition\TerritoryData.cs" />
+    <Compile Include="IO\StringUtils.cs" />
+    <Compile Include="Windows\AdjustRatesWindow.xaml.cs">
+      <DependentUpon>AdjustRatesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\BalanceRemaindersWindow.xaml.cs">
+      <DependentUpon>BalanceRemaindersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ClansWindow.xaml.cs">
+      <DependentUpon>ClansWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CompilerOutputWindow.xaml.cs">
+      <DependentUpon>CompilerOutputWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\IgnoreClansWindow.xaml.cs">
+      <DependentUpon>IgnoreClansWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ItemDataWindow.xaml.cs">
+      <DependentUpon>ItemDataWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Windows\NewScriptWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="AI\Compiler\nasc.key">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="Resources\nasc.xshd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\new.png" />
+    <Resource Include="Resources\Images\open.png" />
+    <Resource Include="Resources\Images\save.png" />
+    <Resource Include="Resources\Images\save_as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\left.png" />
+    <Resource Include="Resources\Images\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AI\Decompiler\boost_filesystem-mgw43-1_38.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Decompiler\boost_system-mgw43-1_38.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Decompiler\category_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Decompiler\denasc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Decompiler\item_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Decompiler\manual_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Decompiler\npc_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Decompiler\quest_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Decompiler\quest_pch2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Decompiler\skill_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\categorydata.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\category_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\fishing_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\fstring.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\item_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\item_pch2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\l2npc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\LinError.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\manual_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\nasc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\nasc.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\npc_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\option_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\quest_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\quest_pch2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\skill_pch.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\skill_pch2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AI\Compiler\skill_pch3.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\MesloLGLDZ-Bold.ttf" />
+    <Resource Include="Resources\Fonts\MesloLGLDZ-BoldItalic.ttf" />
+    <Resource Include="Resources\Fonts\MesloLGLDZ-Italic.ttf" />
+    <Resource Include="Resources\Fonts\MesloLGLDZ-Regular.ttf" />
+    <EmbeddedResource Include="Resources\nasc_format.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\Code\class.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Images\Code\event.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Images\Code\field.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Images\Code\method.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Images\Code\property.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GraphicsLibrary\GraphicsLibrary.csproj">
+      <Project>{51cd8cc1-bb19-4689-a581-eaf3cb0b2d9e}</Project>
+      <Name>GraphicsLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\edit_color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\geodata.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\compile.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

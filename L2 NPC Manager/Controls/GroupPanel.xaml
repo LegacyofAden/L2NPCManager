@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="L2NPCManager.Controls.GroupPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Controls="clr-namespace:L2NPCManager.Controls"
+             mc:Ignorable="d" d:DesignWidth="324">
+    <UserControl.Resources>
+        <Style x:Key="btn_style" TargetType="{x:Type Image}">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Width" Value="18" />
+            <Setter Property="Height" Value="18" />
+        </Style>
+        <Style x:Key="col_centered" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="head_centered" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="txt_extra" TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="#FFFFC500" />
+            <Setter Property="Background" Value="#FFFFFFC3" />
+        </Style>
+        <Style x:Key="txt_invalid" TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="#F00" />
+            <Setter Property="Background" Value="#FCC" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Rectangle Stroke="Black" Fill="#EEE" RadiusX="4" RadiusY="4" />
+        <Label x:Name="lblName" Content="Group N" HorizontalAlignment="Left" Margin="4,2,0,0" VerticalAlignment="Top" FontSize="16" Padding="5,2" FontFamily="Segoe UI Semibold"/>
+
+        <Controls:TextBoxFloat x:Name="txtChance" Min="0" Max="100" AllowEmpty="False"  Margin="0,4,36,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="24" Width="60" FontSize="14" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="txtChance_TextChanged"/>
+        <Button x:Name="btnDelete" Margin="0,4,4,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="28" Height="24" ToolTip="Delete Group" Click="btnDelete_Click">
+            <Image Source="/Resources/Images/trash.png" Style="{StaticResource btn_style}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        </Button>
+
+        <Label Content="Remainder:" Margin="0,32,133,0" HorizontalAlignment="Right" VerticalAlignment="Top" Padding="2,0" Height="24" VerticalContentAlignment="Center" FontSize="14" />
+        <TextBox x:Name="txtRemainder" Margin="0,32,68,0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="24" IsReadOnly="True" TextWrapping="NoWrap" Text="100%" Width="60" FontSize="14" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <Button x:Name="btnAdjust" Margin="0,32,36,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="28" Height="24" ToolTip="Distribute remainder &amp; equalize item chances" Click="btnAdjust_Click">
+            <Image Source="/L2 NPC Manager;component/Resources/Images/calculator.png" Style="{StaticResource btn_style}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        </Button>
+        <Button x:Name="btnAddItem" Margin="0,32,4,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="28" Height="24" ToolTip="Add Item" Click="btnAddItem_Click">
+            <Image Source="/L2 NPC Manager;component/Resources/Images/add.png" Style="{StaticResource btn_style}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        </Button>
+
+        <DataGrid x:Name="lstItems" Margin="4,60,4,4" AutoGenerateColumns="False" HeadersVisibility="Column" SelectionMode="Single" CanUserResizeRows="False" FontSize="14" CanUserAddRows="False" CellEditEnding="lstItems_CellEditEnding" VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" ClipboardContentBinding="{x:Null}" Header="Item" Width="*" />
+                <DataGridTemplateColumn Header="Min" Width="58" CellStyle="{StaticResource col_centered}" HeaderStyle="{StaticResource head_centered}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Min}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Controls:TextBoxUINT Text="{Binding Min, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Max" Width="58" CellStyle="{StaticResource col_centered}" HeaderStyle="{StaticResource head_centered}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Max}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Controls:TextBoxUINT Text="{Binding Max, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Chance" Width="80" CellStyle="{StaticResource col_centered}" HeaderStyle="{StaticResource head_centered}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Chance}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Controls:TextBoxFloat Text="{Binding Chance, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="28" IsReadOnly="True" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnApplyRemainder_Click" ToolTip="Apply Remainder">
+                                <Image Source="/Resources/Images/left.png" Style="{StaticResource btn_style}" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="28" IsReadOnly="True" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Command="Delete" CommandParameter="{Binding}" ToolTip="Delete Item">
+                                <Image Source="/Resources/Images/delete.png" Style="{StaticResource btn_style}" />
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
